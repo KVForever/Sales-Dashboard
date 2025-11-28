@@ -1,0 +1,98 @@
+<!--
+    Class: SWE2511 - Sales Dashboard
+	Name: Kalkidan Vassar
+	Class Section: 131
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sales Dashboard</title>
+
+        <!-- Include the Google bar chart library -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <!-- Include the Bootstrap library -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+        <!-- Include the SalesDashboard data set -->
+        <script type="text/javascript" src="SalesDashboardData.js"></script>
+        
+        <!-- Include the SalesDashboard code -->
+        <script type="text/javascript" src="SalesDashboard.js"></script>
+        
+        <!-- Include additional CSS files if desired -->
+        <link rel="stylesheet" type="text/css" href="SalesDashboard.css">
+    </head>
+    <body>
+    <p class="fs-2 ms-2 text-center">Sales Dashboard</p>
+    <div class="top-row row mb-1">
+        <div id="myLineChart" class="col-6"></div>
+        <div id="myPieChart" class="col-6"></div>
+    </div>
+    <div class="row mb-5">
+        <div id="lineChartFilters" class="col-6">
+            <form id="lineChartFiltersForm" class="d-flex justify-content-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="firstQuarter" name="quarterFilter" value="First Quarter">
+                    <label class="form-check-label" for="firstQuarter">First Quarter</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="secondQuarter" name="quarterFilter" value="Second Quarter">
+                    <label class="form-check-label" for="secondQuarter">Second Quarter</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="thirdQuarter" name="quarterFilter" value="Third Quarter">
+                    <label class="form-check-label" for="thirdQuarter">Third Quarter</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="fourthQuarter" name="quarterFilter" value="Fourth Quarter">
+                    <label class="form-check-label" for="fourthQuarter">Fourth Quarter</label>
+                </div>
+            </form>
+        </div>
+        <div id="pieChartFilters" class="col-6">
+            <div class="slideContainer">
+                <label for="myRange" class>Showing Categories with Revenue Above: <span id="sliderValue">--</span></label>
+                <input type="range" min="0" max="800000" value="50" class="slider" id="myRange">
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5 d-flex justify-content-center">
+        <p class="fs-4 text-center">Top Sales People</p>
+        <form id="regionFilterForm" class="d-flex justify-content-center align-items-center w-75 gap-2">
+            <!-- Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="regionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Region
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="regionDropdown">
+                    <li><a class="dropdown-item" href="#" data-region="All">All</a></li>
+                    <li><a class="dropdown-item" href="#" data-region="West">West</a></li>
+                    <li><a class="dropdown-item" href="#" data-region="Northeast">Northeast</a></li>
+                    <li><a class="dropdown-item" href="#" data-region="Southeast">Southeast</a></li>
+                    <li><a class="dropdown-item" href="#" data-region="Midwest">Midwest</a></li>
+
+                </ul>
+            </div>
+
+            <!-- Hidden input to store selected region -->
+            <input type="hidden" name="region" id="selectedRegion">
+
+            <!-- Optional text input -->
+            <input type="text" class="form-control" name="searchTerm" placeholder="Search..." />
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+    <div class="bottom-row row justify-content-center mb-3">
+        <div id="myTableChart" class="col-10"></div>
+    </div>
+
+    </body>
+</html>
